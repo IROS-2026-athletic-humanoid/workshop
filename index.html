@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IROS 2026 Workshop | Perception and Decision Making for Athletic Humanoid Robotics</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --maxw: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--maxw), 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+      color: white;
+      padding: 72px 0 56px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      margin: 0 0 18px;
+      max-width: 900px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 900px;
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      width: min(var(--maxw), 92%);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .nav a {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      margin-top: 28px;
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .notice {
+      background: #ecfeff;
+      border: 1px solid #bae6fd;
+      color: #155e75;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 18px 0 0;
+      font-size: 0.97rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .speaker,
+    .organizer,
+    .company {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .speaker strong,
+    .organizer strong,
+    .company strong {
+      font-size: 1.03rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0fdfa;
+    }
+
+    .footer {
+      padding: 38px 0 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 820px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav-inner {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="badge">Tentative Full-Day Workshop · IROS 2026</div>
+      <h1>Perception and Decision Making for Athletic Humanoid Robotics</h1>
+      <p>
+        This website presents a tentative workshop proposal focused on advancing perception,
+        decision making, and whole-body intelligence for athletic humanoid robots.
+      </p>
+      <p>
+        Topics include agile locomotion, sports, dynamic manipulation, real-time planning,
+        biomechanical inspiration, and embodied AI under high-speed and contact-rich conditions.
+      </p>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#about">About</a>
+      <a href="#organizers">Organizers</a>
+      <a href="#topics">Tentative Topics</a>
+      <a href="#speakers">Tentative Speakers</a>
+      <a href="#demos">Tentative Live Demos</a>
+      <a href="#endorsement">TC Endorsement</a>
+      <a href="#program">Tentative Program</a>
+    </div>
+  </nav>
+
+  <section id="about" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>About the Workshop</h2>
+        <p>
+          <strong>Tentative format:</strong> Full-day workshop
+        </p>
+        <p>
+          Humanoid robots are rapidly advancing beyond structured environments toward dynamic,
+          real-world athletic tasks, from agile locomotion and acrobatic maneuvers to competitive
+          sports and physically demanding manipulation. Achieving human-level athletic performance
+          demands tight integration of robust perception, real-time decision-making, and whole-body
+          control under high-speed, contact-rich, and unpredictable conditions.
+        </p>
+        <p>
+          This workshop tentatively aims to bring together researchers across robotics, computer
+          vision, reinforcement learning, biomechanics, and sports science to explore the frontiers
+          of athletic humanoid intelligence. We seek to bridge the gap between perception systems
+          that must operate at the speed and precision required for athletic tasks, and
+          decision-making frameworks that can plan and adapt under physical and temporal constraints.
+        </p>
+        <p>
+          By convening researchers from diverse backgrounds, including vision, deep learning,
+          optimal control, biomechanics, and AI for sports, the workshop tentatively seeks to
+          identify open challenges, foster cross-disciplinary collaboration, and chart a roadmap
+          for the next generation of athletic humanoid robots.
+        </p>
+        <div class="notice">
+          All content on this page is tentative unless explicitly listed under the Organizers section.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="organizers" class="section">
+    <div class="container">
+      <h2>Organizers</h2>
+      <div class="grid">
+        <div class="organizer">
+          <strong>Yan Gu</strong><br />
+          Purdue University<br />
+          585 Purdue Mall, West Lafayette, IN 47907-2088, USA<br />
+          <a href="mailto:yangu@purdue.edu">yangu@purdue.edu</a><br />
+          <a href="https://www.thetracelab.com/" target="_blank">https://www.thetracelab.com/</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Ziyun (Claude) Wang</strong><br />
+          Johns Hopkins University<br />
+          <a href="mailto:claude.w@jhu.edu">claude.w@jhu.edu</a><br />
+          <a href="https://ziyunclaudewang.github.io/" target="_blank">https://ziyunclaudewang.github.io/</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Zhaoming Xie</strong><br />
+          Robotics and AI Institute (RAI Institute)<br />
+          145 Broadway, Cambridge, MA 02142, USA<br />
+          <a href="mailto:zxieaa@gmail.com">zxieaa@gmail.com</a><br />
+          <a href="https://zhaomingxie.github.io/" target="_blank">https://zhaomingxie.github.io/</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Jiashun Wang</strong><br />
+          Carnegie Mellon University, Robotics Institute<br />
+          5000 Forbes Avenue, Pittsburgh, PA 15213, USA<br />
+          <a href="mailto:jiashunw@andrew.cmu.edu">jiashunw@andrew.cmu.edu</a><br />
+          <a href="https://jiashunwang.github.io/" target="_blank">https://jiashunwang.github.io/</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Wenjing Li</strong><br />
+          Purdue University<br />
+          585 Purdue Mall, West Lafayette, IN 47907-2088, USA<br />
+          <a href="mailto:li5923@purdue.edu">li5923@purdue.edu</a><br />
+          <a href="https://www.thetracelab.com/wjli.html" target="_blank">https://www.thetracelab.com/wjli.html</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Wenxi Chen</strong><br />
+          Purdue University<br />
+          585 Purdue Mall, West Lafayette, IN 47907-2088, USA<br />
+          <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a><br />
+          <a href="https://www.thetracelab.com/wchen.html" target="_blank">https://www.thetracelab.com/wchen.html</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Tentative List of Topics</h2>
+        <ul>
+          <li>Tentative topic: Perception for fast and dynamic humanoid behaviors</li>
+          <li>Tentative topic: Real-time decision making for athletic humanoid robots</li>
+          <li>Tentative topic: Reinforcement learning for sports and agile locomotion</li>
+          <li>Tentative topic: Whole-body control under contact-rich and high-speed conditions</li>
+          <li>Tentative topic: Vision-based policy learning for athletic skills</li>
+          <li>Tentative topic: Humanoid robots in racket sports, football, badminton, and related tasks</li>
+          <li>Tentative topic: Biomechanics and human movement inspiration for humanoid intelligence</li>
+          <li>Tentative topic: Sim-to-real transfer for athletic humanoid systems</li>
+          <li>Tentative topic: Embodied AI for reactive and physically grounded decision making</li>
+          <li>Tentative topic: Benchmarking, evaluation, and open challenges in athletic humanoid robotics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers" class="section">
+    <div class="container">
+      <h2>Tentative Speakers</h2>
+
+      <div class="card" style="margin-bottom: 22px;">
+        <h3>Tentatively Confirmed Speakers</h3>
+        <div class="grid">
+          <div class="speaker">
+            <strong>Vikash Kumar</strong><br />
+            MyoLab.AI<br />
+            Address: TBD<br />
+            <a href="mailto:vikashplus@gmail.com">vikashplus@gmail.com</a><br />
+            <a href="https://myolab.ai/" target="_blank">https://myolab.ai/</a><br />
+            <span class="muted">Tentative topic: MyoChallenge</span>
+          </div>
+
+          <div class="speaker">
+            <strong>Mingguo Zhao</strong><br />
+            Tsinghua University<br />
+            Central Main Building, Room 720, Beijing 100084, China<br />
+            <a href="mailto:mgzhao@mail.tsinghua.edu.cn">mgzhao@mail.tsinghua.edu.cn</a><br />
+            <a href="https://www.au.tsinghua.edu.cn/en/info/1110/3296.htm" target="_blank">Profile page</a><br />
+            <span class="muted">Tentative topic: Booster</span>
+          </div>
+
+          <div class="speaker">
+            <strong>Chenhao Liu</strong><br />
+            Beijing Phybot Technology Co., Ltd<br />
+            Beijing, China 100089<br />
+            <a href="mailto:liuchenhao@phybot.cn">liuchenhao@phybot.cn</a><br />
+            <span class="muted">Tentative talk title: Humanoid Badminton: Bringing Athletic Robots from the Lab to the Court</span>
+          </div>
+
+          <div class="speaker">
+            <strong>Karthik Ramani</strong><br />
+            Purdue University<br />
+            585 Purdue Mall, West Lafayette, IN 47907-2088, USA<br />
+            <a href="mailto:ramani@purdue.edu">ramani@purdue.edu</a><br />
+            <a href="https://engineering.purdue.edu/~ramani/wordpress/" target="_blank">Faculty page</a><br />
+            <span class="muted">Tentative talk title: Athletic AI: Embodied Intelligence and Spatial Computing Systems for Racket Sports</span>
+          </div>
+
+          <div class="speaker">
+            <strong>Dieter Büchler</strong><br />
+            University of Alberta<br />
+            Address: TBD, Canada<br />
+            <a href="mailto:dieter.buechler@ualberta.ca">dieter.buechler@ualberta.ca</a><br />
+            <span class="muted">Tentative affiliation note: Former Max Planck Institute</span>
+          </div>
+
+          <div class="speaker">
+            <strong>Aude Billard</strong><br />
+            École Polytechnique Fédérale de Lausanne (EPFL)<br />
+            ME A3 393, Station 9, 1015 Lausanne, Switzerland<br />
+            <a href="mailto:aude.billard@epfl.ch">aude.billard@epfl.ch</a><br />
+            <a href="https://people.epfl.ch/aude.billard" target="_blank">https://people.epfl.ch/aude.billard</a><br />
+            <span class="muted">Tentative topic: Fast-object catching</span><br />
+            <span class="muted">Tentative talk title: Next challenges for Humanoids and any robots to display human-like or beyond dexterity</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Tentative / Confirmation Pending</h3>
+        <div class="grid">
+          <div class="speaker">
+            <strong>Jessica K. Hodgins</strong><br />
+            Carnegie Mellon University &amp; RAI Institute<br />
+            Robotics Institute, 5000 Forbes Avenue, Pittsburgh, PA 15213, USA<br />
+            <a href="mailto:jkh@cs.cmu.edu">jkh@cs.cmu.edu</a><br />
+            <a href="https://www.cs.cmu.edu/~jkh/" target="_blank">https://www.cs.cmu.edu/~jkh/</a><br />
+            <span class="muted">Tentative topic: Computer Animation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demos" class="section">
+    <div class="container">
+      <h2>Tentative Live Demo Companies</h2>
+      <div class="grid">
+        <div class="company">
+          <strong>Beijing Phybot Technology</strong><br />
+          Tentative demo: Humanoid Badminton
+        </div>
+        <div class="company">
+          <strong>Booster Robotics</strong><br />
+          Tentative demo: Dancing / Football
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="endorsement" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>RAS Technical Committees Endorsement</h2>
+        <p>
+          The proposed workshop tentatively fits the scope of multiple IEEE-RAS Technical Committees.
+        </p>
+        <p>
+          <strong>Tentative endorsement status:</strong> endorsement letters have been received or are being collected.
+        </p>
+        <ul>
+          <li>Tentative TC endorsement: Whole-Body Control</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Tentative Program</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Time</th>
+              <th>Event</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:45–9:00</td>
+              <td>Tentative welcome and introduction</td>
+            </tr>
+            <tr>
+              <td>9:00–10:30</td>
+              <td>Tentative Talks 1–3 (Chair: TBD)</td>
+            </tr>
+            <tr>
+              <td>10:30–11:00</td>
+              <td>Tentative coffee break</td>
+            </tr>
+            <tr>
+              <td>11:00–12:00</td>
+              <td>Tentative Talks 4–5 (Chair: TBD)</td>
+            </tr>
+            <tr>
+              <td>12:00–12:30</td>
+              <td>Tentative poster session</td>
+            </tr>
+            <tr>
+              <td>12:30–14:30</td>
+              <td>Tentative lunch</td>
+            </tr>
+            <tr>
+              <td>14:30–15:30</td>
+              <td>Tentative Talks 6–7 (Chair: TBD)</td>
+            </tr>
+            <tr>
+              <td>15:30–16:00</td>
+              <td>Tentative coffee break</td>
+            </tr>
+            <tr>
+              <td>16:00–17:00</td>
+              <td>Tentative Talks 8–9 (Chair: TBD)</td>
+            </tr>
+            <tr>
+              <td>17:00–17:30</td>
+              <td>Tentative poster session</td>
+            </tr>
+            <tr>
+              <td>17:30</td>
+              <td>Tentative end of workshop</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top: 14px;">
+          Tentative note: the number of talks may be adjusted, for example by modifying the lunch duration.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Tentative workshop webpage for IROS 2026 · Perception and Decision Making for Athletic Humanoid Robotics
+    </div>
+  </footer>
+</body>
+</html>
