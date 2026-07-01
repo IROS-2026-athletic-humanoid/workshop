@@ -145,6 +145,10 @@
       gap: 20px;
     }
 
+    .organizer-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .speaker,
     .organizer,
     .company {
@@ -158,6 +162,21 @@
     .organizer strong,
     .company strong {
       font-size: 1.03rem;
+    }
+
+    .organizer {
+      overflow-wrap: anywhere;
+    }
+
+    .organizer img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: #f3f4f6;
     }
 
     ul {
@@ -201,12 +220,22 @@
         grid-template-columns: 1fr;
       }
 
+      .organizer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .hero h1 {
         font-size: 2rem;
       }
 
       .nav-inner {
         gap: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .organizer-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -276,8 +305,9 @@
   <section id="organizers" class="section">
     <div class="container">
       <h2>Organizers</h2>
-      <div class="grid">
+      <div class="grid organizer-grid">
         <div class="organizer">
+          <img src="pictures/YanGu.png" alt="Yan Gu headshot" />
           <strong>Yan Gu</strong><br />
           Purdue University<br />
           <a href="mailto:yangu@purdue.edu">yangu@purdue.edu</a><br />
@@ -285,6 +315,7 @@
         </div>
 
         <div class="organizer">
+          <img src="pictures/Ziyun.jpg" alt="Ziyun Wang headshot" />
           <strong>Ziyun (Claude) Wang</strong><br />
           Johns Hopkins University<br />
           <a href="mailto:claude.w@jhu.edu">claude.w@jhu.edu</a><br />
@@ -299,6 +330,7 @@
         </div>
 
         <div class="organizer">
+          <img src="pictures/Jiashun.jpg" alt="Jiashun Wang headshot" />
           <strong>Jiashun Wang</strong><br />
           Carnegie Mellon University, Robotics Institute<br />
           <a href="mailto:jiashunw@andrew.cmu.edu">jiashunw@andrew.cmu.edu</a><br />
@@ -306,6 +338,7 @@
         </div>
 
         <div class="organizer">
+          <img src="pictures/Wenjing.png" alt="Wenjing Li headshot" />
           <strong>Wenjing Li</strong><br />
           Purdue University<br />
           <a href="mailto:li5923@purdue.edu">li5923@purdue.edu</a><br />
@@ -313,6 +346,7 @@
         </div>
 
         <div class="organizer">
+          <img src="pictures/WenxiChen.jpg" alt="Wenxi Chen headshot" />
           <strong>Wenxi Chen</strong><br />
           Purdue University<br />
           <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a><br />
@@ -320,6 +354,7 @@
         </div>
 
         <div class="organizer">
+          <img src="pictures/i-chia-chang-headshot.jpeg" alt="I-Chia Chang headshot" />
           <strong>I-Chia Chang</strong><br />
           Purdue University<br />
           <a href="mailto:chang970@purdue.edu">chang970@purdue.edu</a><br />
