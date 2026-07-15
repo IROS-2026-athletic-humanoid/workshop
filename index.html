@@ -49,7 +49,9 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+      background:
+        linear-gradient(rgba(4, 47, 46, 0.28), rgba(4, 47, 46, 0.38)),
+        url("pictures/athletichumanoid_background_light.png") center / cover no-repeat;
       color: white;
       padding: 72px 0 56px;
     }
@@ -105,6 +107,19 @@
       padding: 42px 0;
     }
 
+    .page-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #about { order: 1; }
+    #call-for-papers { order: 2; }
+    #speakers { order: 3; }
+    #program { order: 4; }
+    #organizers { order: 5; }
+    #demos { order: 6; }
+    #contact { order: 7; }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -149,6 +164,17 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
+    .speaker-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      align-items: start;
+    }
+
+    .demo-grid {
+      grid-template-columns: repeat(2, minmax(0, 260px));
+      justify-content: start;
+    }
+
     .speaker,
     .organizer,
     .company {
@@ -162,6 +188,148 @@
     .organizer strong,
     .company strong {
       font-size: 1.03rem;
+    }
+
+    .speaker img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: #f3f4f6;
+    }
+
+    .speaker-info {
+      overflow-wrap: anywhere;
+    }
+
+    .presentation {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .presentation-head {
+      display: block;
+    }
+
+    .presentation-title {
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .abstract-toggle {
+      display: block;
+      border: 0;
+      padding: 0;
+      margin-top: 8px;
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 700;
+      font: inherit;
+      text-align: left;
+    }
+
+    .abstract-toggle::before {
+      content: "▶";
+      display: inline-block;
+      margin-right: 7px;
+      font-size: 0.78em;
+    }
+
+    .abstract-toggle[aria-expanded="true"]::before {
+      content: "▼";
+    }
+
+    .abstract-toggle:hover {
+      color: var(--accent-dark);
+    }
+
+    .abstract-panel {
+      display: none;
+    }
+
+    .abstract-panel p {
+      margin: 6px 0 0;
+    }
+
+    .speaker-modal {
+      width: min(860px, 92vw);
+      max-height: 88vh;
+      padding: 28px;
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+      color: var(--text);
+    }
+
+    .speaker-modal::backdrop {
+      background: rgba(15, 23, 42, 0.68);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-speaker-top {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding-right: 28px;
+    }
+
+    .modal-speaker-top img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #f3f4f6;
+    }
+
+    .modal-speaker-info strong {
+      font-size: 1.35rem;
+    }
+
+    .modal-presentation {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-presentation h3 {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
+    }
+
+    .modal-abstract p:first-child {
+      margin-top: 0;
+    }
+
+    .company img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: #f7f8fb;
     }
 
     .organizer {
@@ -220,7 +388,8 @@
         grid-template-columns: 1fr;
       }
 
-      .organizer-grid {
+      .organizer-grid,
+      .speaker-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -234,8 +403,23 @@
     }
 
     @media (max-width: 560px) {
-      .organizer-grid {
+      .organizer-grid,
+      .speaker-grid,
+      .demo-grid {
         grid-template-columns: 1fr;
+      }
+
+      .speaker-modal {
+        padding: 22px;
+      }
+
+      .modal-speaker-top {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .modal-speaker-top img {
+        width: min(220px, 100%);
       }
     }
   </style>
@@ -243,10 +427,10 @@
 <body>
   <header class="hero">
     <div class="container">
-      <div class="badge">Tentative Full-Day Workshop · IROS 2026</div>
+      <div class="badge">Full-Day Workshop @ IROS 2026</div>
       <h1>Perception and Decision Making for Athletic Humanoid Robotics</h1>
       <p>
-        This website presents a tentative workshop proposal focused on advancing perception,
+        This workshop focused on advancing perception,
         decision making, and whole-body intelligence for athletic humanoid robots.
       </p>
       <p>
@@ -259,22 +443,21 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="#about">About</a>
+      <a href="#call-for-papers">Call for Papers</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#program">Schedule</a>
       <a href="#organizers">Organizers</a>
-      <a href="#topics">Tentative Topics</a>
-      <a href="#speakers">Tentative Speakers</a>
-      <a href="#demos">Tentative Live Demos</a>
-      <a href="#endorsement">TC Endorsement</a>
-      <a href="#program">Program Schedule</a>
+      <a href="#demos">Live Demos</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
+  <main class="page-content">
   <section id="about" class="section">
     <div class="container">
       <div class="card">
         <h2>About the Workshop</h2>
-        <p>
-          <strong>Tentative format:</strong> Full-day workshop
-        </p>
+
         <p>
           Humanoid robots are rapidly advancing beyond structured environments toward dynamic,
           real-world athletic tasks, from agile locomotion and acrobatic maneuvers to competitive
@@ -283,7 +466,7 @@
           control under high-speed, contact-rich, and unpredictable conditions.
         </p>
         <p>
-          This workshop tentatively aims to bring together researchers across robotics, computer
+          This workshop aims to bring together researchers across robotics, computer
           vision, reinforcement learning, biomechanics, and sports science to explore the frontiers
           of athletic humanoid intelligence. We seek to bridge the gap between perception systems
           that must operate at the speed and precision required for athletic tasks, and
@@ -291,12 +474,120 @@
         </p>
         <p>
           By convening researchers from diverse backgrounds, including vision, deep learning,
-          optimal control, biomechanics, and AI for sports, the workshop tentatively seeks to
+          optimal control, biomechanics, and AI for sports, the workshop seeks to
           identify open challenges, foster cross-disciplinary collaboration, and chart a roadmap
           for the next generation of athletic humanoid robots.
         </p>
-        <div class="notice">
-          All content on this page is tentative unless explicitly listed under the Organizers section.
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers" class="section">
+    <div class="container">
+      <h2>Speakers</h2>
+
+      <div class="card" style="margin-bottom: 22px;">
+        <h3>Confirmed Speakers</h3>
+        <div class="grid speaker-grid">
+          <div class="speaker">
+            <img src="pictures/Guanya Shi.png" alt="Guanya Shi headshot" />
+            <div class="speaker-info">
+              <strong>Guanya Shi</strong><br />
+              Assistant Professor<br />
+              Carnegie Mellon University, Robotics Institute<br />
+              <a href="https://lecar-lab.github.io/" target="_blank">LeCAR Lab</a>
+            </div>
+            <div class="presentation">
+              <div class="presentation-head">
+                <span class="presentation-title">Humanoid Learning from Human Data with Physics Grounding</span>
+                <button class="abstract-toggle" type="button" aria-expanded="false">Presentation abstract</button>
+              </div>
+              <div class="abstract-panel">
+                <p>Humanoid robots offer two unique advantages for general-purpose embodied intelligence. First, they are inherently generalist platforms, capable of performing a wide range of tasks in complex, human-centric environments. Second, the close embodiment alignment between humans and humanoids enables the transfer of skills from human data to robotic control.</p>
+                <p>However, unlike direct teleoperation, learning from off-embodiment human data introduces non-trivial cross-embodiment gaps, particularly at the level of dynamics and actuation. In this talk, we present a general recipe for learning humanoid skills from human data with physics grounding. Human data provides high-level intent and skill structure, while a physics-grounded layer translates them into motor-level actions. This approach enables versatile, adaptive, and robust skill learning across a range of loco-manipulation and dexterous manipulation tasks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Aude Billard.jpg" alt="Aude Billard headshot" />
+            <div class="speaker-info">
+              <strong>Aude Billard</strong><br />
+              Professor<br />
+              École Polytechnique Fédérale de Lausanne <br />
+              <a href="https://people.epfl.ch/aude.billard" target="_blank">Profile page</a>
+            </div>
+            <div class="presentation"><span class="presentation-title">Next Challenges for Humanoids and Any Robots to Display Human-Like or Beyond Dexterity</span></div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Dieter Büchler.png" alt="Dieter Büchler headshot" />
+            <div class="speaker-info">
+              <strong>Dieter Büchler</strong><br />
+              Professor<br />
+              Johannes Kepler University Linz &amp; University of Alberta
+            </div>
+            <div class="presentation">
+              <div class="presentation-head">
+                <span class="presentation-title">The Role of the Robotic Body in Learning Agile &amp; Accurate Control</span>
+                <button class="abstract-toggle" type="button" aria-expanded="false">Presentation abstract</button>
+              </div>
+              <div class="abstract-panel">
+                <p>Learning skills on physical robots to solve tasks at human-level performance is a key enabling technology that can revolutionize everyone's lives. Much of today’s research focuses on developing learning algorithms, while designing the robotic body used for execution is often treated as a separate problem. Biological systems, and especially the human anatomy, show that generalization and high performance in difficult tasks are facilitated by the body itself. In this talk, I will illustrate what we have learned over the past years about how we can build robots to run learning algorithms more efficiently and safely.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Chenhao Liu.png" alt="Chenhao Liu headshot" />
+            <div class="speaker-info">
+              <strong>Chenhao Liu</strong><br />
+              Research Scientist<br />
+              Beijing Phybot Technology Co., Ltd
+            </div>
+            <div class="presentation">
+              <div class="presentation-head">
+                <span class="presentation-title">Humanoid Badminton: Bringing Athletic Robots from the Lab to the Court</span>
+                <button class="abstract-toggle" type="button" aria-expanded="false">Presentation abstract</button>
+              </div>
+              <div class="abstract-panel">
+                <p>Humanoid robots have achieved impressive capabilities in locomotion and manipulation, yet fast and precise interaction with moving objects remains a major challenge. In this talk, I will present a reinforcement-learning framework for humanoid badminton that learns a unified whole-body policy for footwork, stroke, and targeted shuttle placement. To improve both motion quality and task adaptability, multiple region-specific adversarial motion prior discriminators guide the robot toward different human-inspired striking styles across its reachable workspace. The desired return location is incorporated directly into policy training, allowing the controller to jointly determine how to move, where to strike, which stroke to execute, and where to return the shuttle, without relying on an upper-level planner.</p>
+                <p>I will also introduce an annealed curriculum that initially uses locomotion-related subtasks to reduce the exploration difficulty of whole-body learning. These auxiliary objectives are gradually annealed away as training progresses, reducing gradient conflicts between locomotion and striking. In addition, I will discuss a prediction-free variant that achieves competitive performance without explicit shuttlecock trajectory prediction, highlighting the potential for more reactive and streamlined dynamic interaction systems. The resulting policy is evaluated in simulation and on a real humanoid, demonstrating dynamic and coordinated whole-body badminton performance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Mingguo Zhao.jfif" alt="Mingguo Zhao headshot" />
+            <div class="speaker-info">
+              <strong>Mingguo Zhao</strong><br />
+              Professor<br />
+              Tsinghua University<br />
+              <a href="https://www.au.tsinghua.edu.cn/en/info/1110/3296.htm" target="_blank">Profile page</a>
+            </div>
+            <div class="presentation"><strong>Topic:</strong> TBD</div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Vikash Kumar.jfif" alt="Vikash Kumar headshot" />
+            <div class="speaker-info">
+              <strong>Vikash Kumar</strong><br />
+              Founder &amp; CEO<br />
+              <a href="https://myolab.ai/" target="_blank">MyoLab.AI</a>
+            </div>
+            <div class="presentation"><strong>Topic:</strong> MyoChallenge</div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/KathikRamani.png" alt="Karthik Ramani headshot" />
+            <div class="speaker-info">
+              <strong>Karthik Ramani</strong><br />
+              Professor<br />
+              Purdue University<br />
+              <a href="https://engineering.purdue.edu/~ramani/wordpress/" target="_blank">Faculty page</a>
+            </div>
+            <div class="presentation"><span class="presentation-title">Athletic AI: Embodied Intelligence and Spatial Computing Systems for Racket Sports</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -311,46 +602,7 @@
           <strong>Yan Gu</strong><br />
           Purdue University<br />
           <a href="mailto:yangu@purdue.edu">yangu@purdue.edu</a><br />
-          <a href="https://www.thetracelab.com/" target="_blank">https://www.thetracelab.com/</a>
-        </div>
-
-        <div class="organizer">
-          <img src="pictures/Ziyun.jpg" alt="Ziyun Wang headshot" />
-          <strong>Ziyun (Claude) Wang</strong><br />
-          Johns Hopkins University<br />
-          <a href="mailto:claude.w@jhu.edu">claude.w@jhu.edu</a><br />
-          <a href="https://ziyunclaudewang.github.io/" target="_blank">https://ziyunclaudewang.github.io/</a>
-        </div>
-
-        <div class="organizer">
-          <strong>Zhaoming Xie</strong><br />
-          Robotics and AI Institute (RAI Institute)<br />
-          <a href="mailto:zxieaa@gmail.com">zxieaa@gmail.com</a><br />
-          <a href="https://zhaomingxie.github.io/" target="_blank">https://zhaomingxie.github.io/</a>
-        </div>
-
-        <div class="organizer">
-          <img src="pictures/Jiashun.jpg" alt="Jiashun Wang headshot" />
-          <strong>Jiashun Wang</strong><br />
-          Carnegie Mellon University, Robotics Institute<br />
-          <a href="mailto:jiashunw@andrew.cmu.edu">jiashunw@andrew.cmu.edu</a><br />
-          <a href="https://jiashunwang.github.io/" target="_blank">https://jiashunwang.github.io/</a>
-        </div>
-
-        <div class="organizer">
-          <img src="pictures/Wenjing.png" alt="Wenjing Li headshot" />
-          <strong>Wenjing Li</strong><br />
-          Purdue University<br />
-          <a href="mailto:li5923@purdue.edu">li5923@purdue.edu</a><br />
-          <a href="https://www.thetracelab.com/wjli.html" target="_blank">https://www.thetracelab.com/wjli.html</a>
-        </div>
-
-        <div class="organizer">
-          <img src="pictures/WenxiChen.jpg" alt="Wenxi Chen headshot" />
-          <strong>Wenxi Chen</strong><br />
-          Purdue University<br />
-          <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a><br />
-          <a href="https://www.linkedin.com/in/wenxi-chen/" target="_blank">https://www.linkedin.com/in/wenxi-chen/</a>
+          <a href="https://www.thetracelab.com/" target="_blank" rel="noopener noreferrer">  Website</a>
         </div>
 
         <div class="organizer">
@@ -358,139 +610,91 @@
           <strong>I-Chia Chang</strong><br />
           Purdue University<br />
           <a href="mailto:chang970@purdue.edu">chang970@purdue.edu</a><br />
-          <a href="https://www.thetracelab.com/icchang.html" target="_blank">https://www.thetracelab.com/icchang.html</a>
+          <a href="https://www.thetracelab.com/icchang.html" target="_blank" rel="noopener noreferrer">  Website</a>
+        </div>
+
+        <div class="organizer">
+          <img src="pictures/WenxiChen.jpg" alt="Wenxi Chen headshot" />
+          <strong>Wenxi Chen</strong><br />
+          Purdue University<br />
+          <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a><br />
+          <a href="https://www.linkedin.com/in/wenxi-chen/" target="_blank" rel="noopener noreferrer">  Website</a>
+        </div>
+
+        <div class="organizer">
+          <img src="pictures/Wenjing.png" alt="Wenjing Li headshot" />
+          <strong>Wenjing Li</strong><br />
+          Purdue University<br />
+          <a href="mailto:li5923@purdue.edu">li5923@purdue.edu</a><br />
+          <a href="https://www.thetracelab.com/wjli.html" target="_blank" rel="noopener noreferrer">  Website</a>
+        </div>
+
+        <div class="organizer">
+          <img src="pictures/Ziyun.jpg" alt="Ziyun Wang headshot" />
+          <strong>Ziyun (Claude) Wang</strong><br />
+          Johns Hopkins University<br />
+          <a href="mailto:claude.w@jhu.edu">claude.w@jhu.edu</a><br />
+          <a href="https://ziyunclaudewang.github.io/" target="_blank" rel="noopener noreferrer">  Website</a>
+        </div>
+
+        <div class="organizer">
+          <strong>Zhaoming Xie</strong><br />
+          Robotics and AI Institute (RAI Institute)<br />
+          <a href="mailto:zxieaa@gmail.com">zxieaa@gmail.com</a><br />
+          <a href="https://zhaomingxie.github.io/" target="_blank" rel="noopener noreferrer">  Website</a>
+        </div>
+
+        <div class="organizer">
+          <img src="pictures/Jiashun.jpg" alt="Jiashun Wang headshot" />
+          <strong>Jiashun Wang</strong><br />
+          Carnegie Mellon University, Robotics Institute<br />
+          <a href="mailto:jiashunw@andrew.cmu.edu">jiashunw@andrew.cmu.edu</a><br />
+          <a href="https://jiashunwang.github.io/" target="_blank" rel="noopener noreferrer">  Website</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="topics" class="section">
+  <section id="call-for-papers" class="section">
     <div class="container">
       <div class="card">
-        <h2>Tentative List of Topics</h2>
+        <h2>Call for Papers</h2>
+        <p>Topics include, but are not limited to:</p>
         <ul>
-          <li>Tentative topic: Perception for fast and dynamic humanoid behaviors</li>
-          <li>Tentative topic: Real-time decision making for athletic humanoid robots</li>
-          <li>Tentative topic: Reinforcement learning for sports and agile locomotion</li>
-          <li>Tentative topic: Whole-body control under contact-rich and high-speed conditions</li>
-          <li>Tentative topic: Vision-based policy learning for athletic skills</li>
-          <li>Tentative topic: Humanoid robots in racket sports, football, badminton, and related tasks</li>
-          <li>Tentative topic: Biomechanics and human movement inspiration for humanoid intelligence</li>
-          <li>Tentative topic: Sim-to-real transfer for athletic humanoid systems</li>
-          <li>Tentative topic: Embodied AI for reactive and physically grounded decision making</li>
-          <li>Tentative topic: Benchmarking, evaluation, and open challenges in athletic humanoid robotics</li>
+          <li>Perception for fast and dynamic humanoid behaviors</li>
+          <li>Real-time decision making for athletic humanoid robots</li>
+          <li>Reinforcement learning for sports and agile locomotion</li>
+          <li>Whole-body control under contact-rich and high-speed conditions</li>
+          <li>Vision-based policy learning for athletic skills</li>
+          <li>Humanoid robots in racket sports, football, badminton, and related tasks</li>
+          <li>Biomechanics and human movement inspiration for humanoid intelligence</li>
+          <li>Sim-to-real transfer for athletic humanoid systems</li>
+          <li>Embodied AI for reactive and physically grounded decision making</li>
+          <li>Benchmarking, evaluation, and open challenges in athletic humanoid robotics</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="speakers" class="section">
-    <div class="container">
-      <h2>Tentative Speakers</h2>
-
-      <div class="card" style="margin-bottom: 22px;">
-        <h3>Tentatively Confirmed Speakers</h3>
-        <div class="grid">
-          <div class="speaker">
-            <strong>Vikash Kumar</strong><br />
-            MyoLab.AI<br />
-            Address: TBD<br />
-            <a href="mailto:vikashplus@gmail.com">vikashplus@gmail.com</a><br />
-            <a href="https://myolab.ai/" target="_blank">https://myolab.ai/</a><br />
-            <span class="muted">Tentative topic: MyoChallenge</span>
-          </div>
-
-          <div class="speaker">
-            <strong>Mingguo Zhao</strong><br />
-            Tsinghua University<br />
-            Central Main Building, Room 720, Beijing 100084, China<br />
-            <a href="mailto:mgzhao@mail.tsinghua.edu.cn">mgzhao@mail.tsinghua.edu.cn</a><br />
-            <a href="https://www.au.tsinghua.edu.cn/en/info/1110/3296.htm" target="_blank">Profile page</a><br />
-            <span class="muted">Tentative topic: Booster</span>
-          </div>
-
-          <div class="speaker">
-            <strong>Chenhao Liu</strong><br />
-            Beijing Phybot Technology Co., Ltd<br />
-            Beijing, China 100089<br />
-            <a href="mailto:liuchenhao@phybot.cn">liuchenhao@phybot.cn</a><br />
-            <span class="muted">Tentative talk title: Humanoid Badminton: Bringing Athletic Robots from the Lab to the Court</span>
-          </div>
-
-          <div class="speaker">
-            <strong>Karthik Ramani</strong><br />
-            Purdue University<br />
-            585 Purdue Mall, West Lafayette, IN 47907-2088, USA<br />
-            <a href="mailto:ramani@purdue.edu">ramani@purdue.edu</a><br />
-            <a href="https://engineering.purdue.edu/~ramani/wordpress/" target="_blank">Faculty page</a><br />
-            <span class="muted">Tentative talk title: Athletic AI: Embodied Intelligence and Spatial Computing Systems for Racket Sports</span>
-          </div>
-
-          <div class="speaker">
-            <strong>Dieter Büchler</strong><br />
-            University of Alberta<br />
-            Address: TBD, Canada<br />
-            <a href="mailto:dieter.buechler@ualberta.ca">dieter.buechler@ualberta.ca</a><br />
-            <span class="muted">Tentative affiliation note: Former Max Planck Institute</span>
-          </div>
-
-          <div class="speaker">
-            <strong>Aude Billard</strong><br />
-            École Polytechnique Fédérale de Lausanne (EPFL)<br />
-            ME A3 393, Station 9, 1015 Lausanne, Switzerland<br />
-            <a href="mailto:aude.billard@epfl.ch">aude.billard@epfl.ch</a><br />
-            <a href="https://people.epfl.ch/aude.billard" target="_blank">https://people.epfl.ch/aude.billard</a><br />
-            <span class="muted">Tentative topic: Fast-object catching</span><br />
-            <span class="muted">Tentative talk title: Next challenges for Humanoids and any robots to display human-like or beyond dexterity</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Tentative / Confirmation Pending</h3>
-        <div class="grid">
-          <div class="speaker">
-            <strong>Jessica K. Hodgins</strong><br />
-            Carnegie Mellon University &amp; RAI Institute<br />
-            Robotics Institute, 5000 Forbes Avenue, Pittsburgh, PA 15213, USA<br />
-            <a href="mailto:jkh@cs.cmu.edu">jkh@cs.cmu.edu</a><br />
-            <a href="https://www.cs.cmu.edu/~jkh/" target="_blank">https://www.cs.cmu.edu/~jkh/</a><br />
-            <span class="muted">Tentative topic: Computer Animation</span>
-          </div>
-        </div>
+        <div class="notice">The submission portal is coming in the next few days.</div>
       </div>
     </div>
   </section>
 
   <section id="demos" class="section">
     <div class="container">
-      <h2>Tentative Live Demo Companies</h2>
-      <div class="grid">
+      <h2>Live Demo Companies</h2>
+      <div class="grid demo-grid">
         <div class="company">
-          <strong>Beijing Phybot Technology</strong><br />
-          Tentative demo: Humanoid Badminton
+          <a href="https://www.phybot.tech/en/about" target="_blank" rel="noopener noreferrer">
+            <img src="pictures/PHYBOT.png" alt="Phybot Technology" />
+            <strong>Beijing Phybot Technology</strong>
+          </a><br />
+          Demo: Humanoid Badminton
         </div>
         <div class="company">
-          <strong>Booster Robotics</strong><br />
-          Tentative demo: Dancing / Football
+          <a href="https://www.booster.tech/" target="_blank" rel="noopener noreferrer">
+            <img src="pictures/BOOSTER.png" alt="Booster Robotics" />
+            <strong>Booster Robotics</strong>
+          </a><br />
+          Demo: Dancing / Football
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="endorsement" class="section">
-    <div class="container">
-      <div class="card">
-        <h2>RAS Technical Committees Endorsement</h2>
-        <p>
-          The proposed workshop tentatively fits the scope of multiple IEEE-RAS Technical Committees.
-        </p>
-        <p>
-          <strong>Tentative endorsement status:</strong> endorsement letters have been received or are being collected.
-        </p>
-        <ul>
-          <li>Tentative TC endorsement: Whole-Body Control</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -513,19 +717,19 @@
             </tr>
             <tr>
               <td>8:40 - 9:10</td>
-              <td>Invited speaker: Mingguo Zhao from Tsinghua University (Tentative)</td>
+              <td>Invited speaker: Mingguo Zhao from Tsinghua University</td>
             </tr>
             <tr>
               <td>9:10 - 9:40</td>
-              <td>Invited speaker: Guanya Shi from CMU (Tentative)</td>
+              <td>Invited speaker: Guanya Shi from CMU</td>
             </tr>
             <tr>
               <td>9:40 - 10:10</td>
-              <td>Invited speaker: Peter Stone from Sony AI (Tentative)</td>
+              <td>Invited speaker: Peter Stone from Sony AI</td>
             </tr>
             <tr>
               <td>10:10 - 10:40</td>
-              <td>Invited speaker: Chenhao Liu from Phybot (Tentative)</td>
+              <td>Invited speaker: Chenhao Liu from Phybot</td>
             </tr>
             <tr>
               <td>10:40 - 11:10</td>
@@ -533,7 +737,7 @@
             </tr>
             <tr>
               <td>11:10 - 11:40</td>
-              <td>Invited speaker: Karthik Ramani from Purdue University (Tentative)</td>
+              <td>Invited speaker: Karthik Ramani from Purdue University</td>
             </tr>
             <tr>
               <td>11:40 - 12:10</td>
@@ -545,15 +749,15 @@
             </tr>
             <tr>
               <td>13:30 - 14:00</td>
-              <td>Invited speaker: Dieter B&uuml;chler from Johannes Kepler University (Tentative)</td>
+              <td>Invited speaker: Dieter B&uuml;chler from Johannes Kepler University</td>
             </tr>
             <tr>
               <td>14:00 - 14:30</td>
-              <td>Invited speaker: Aude Billard from EPFL (Tentative)</td>
+              <td>Invited speaker: Aude Billard from EPFL</td>
             </tr>
             <tr>
               <td>14:30 - 15:00</td>
-              <td>Invited speaker: Vikash Kumar from MyoLab AI (Tentative)</td>
+              <td>Invited speaker: Vikash Kumar from MyoLab AI</td>
             </tr>
             <tr>
               <td>15:00 - 15:30</td>
@@ -577,10 +781,84 @@
     </div>
   </section>
 
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>
+          For logistics questions, please contact I-Chia Chang at
+          <a href="mailto:chang970@purdue.edu">chang970@purdue.edu</a>.
+        </p>
+        <p>
+          For workshop paper submissions, please contact Wenxi Chen at
+          <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <dialog id="speaker-modal" class="speaker-modal" aria-labelledby="modal-presentation-title">
+    <button class="modal-close" type="button" aria-label="Close presentation abstract">&times;</button>
+    <div class="modal-speaker-top">
+      <img class="modal-headshot" src="" alt="" />
+      <div class="modal-speaker-info"></div>
+    </div>
+    <div class="modal-presentation">
+      <h3 id="modal-presentation-title"></h3>
+      <div class="modal-abstract"></div>
+    </div>
+  </dialog>
+
   <footer class="footer">
     <div class="container">
-      Tentative workshop webpage for IROS 2026 · Perception and Decision Making for Athletic Humanoid Robotics
+      IROS 2026 Workshop · Perception and Decision Making for Athletic Humanoid Robotics
     </div>
   </footer>
+  <script>
+    const speakerModal = document.querySelector("#speaker-modal");
+    const modalHeadshot = speakerModal.querySelector(".modal-headshot");
+    const modalSpeakerInfo = speakerModal.querySelector(".modal-speaker-info");
+    const modalTitle = speakerModal.querySelector("#modal-presentation-title");
+    const modalAbstract = speakerModal.querySelector(".modal-abstract");
+    let activeAbstractButton = null;
+
+    document.querySelectorAll(".abstract-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const speaker = button.closest(".speaker");
+        const headshot = speaker.querySelector("img");
+
+        activeAbstractButton = button;
+        button.setAttribute("aria-expanded", "true");
+        modalHeadshot.src = headshot.src;
+        modalHeadshot.alt = headshot.alt;
+        modalSpeakerInfo.innerHTML = speaker.querySelector(".speaker-info").innerHTML;
+        modalTitle.textContent = speaker.querySelector(".presentation-title").textContent;
+        modalAbstract.innerHTML = speaker.querySelector(".abstract-panel").innerHTML;
+        speakerModal.showModal();
+      });
+    });
+
+    speakerModal.querySelector(".modal-close").addEventListener("click", () => {
+      speakerModal.close();
+    });
+
+    speakerModal.addEventListener("click", (event) => {
+      const bounds = speakerModal.getBoundingClientRect();
+      const clickedOutside =
+        event.clientX < bounds.left || event.clientX > bounds.right ||
+        event.clientY < bounds.top || event.clientY > bounds.bottom;
+      if (clickedOutside) speakerModal.close();
+    });
+
+    speakerModal.addEventListener("close", () => {
+      if (activeAbstractButton) {
+        activeAbstractButton.setAttribute("aria-expanded", "false");
+        activeAbstractButton.focus();
+        activeAbstractButton = null;
+      }
+    });
+  </script>
 </body>
 </html>
