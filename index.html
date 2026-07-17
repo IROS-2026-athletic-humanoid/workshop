@@ -154,6 +154,67 @@
       font-size: 0.97rem;
     }
 
+    .submission-button {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 0.35em;
+      padding: 0.18em 0.55em;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1em;
+      font-weight: 700;
+      line-height: 1.35;
+      text-decoration: none;
+      box-shadow: 0 2px 7px rgba(15, 118, 110, 0.24);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .submission-button:hover {
+      background: #115e59;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(15, 118, 110, 0.32);
+    }
+
+    .submission-button:focus-visible {
+      outline: 3px solid #fbbf24;
+      outline-offset: 3px;
+    }
+
+    .submission-details {
+      margin-top: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .submission-details summary {
+      display: inline-block;
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .submission-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .submission-details summary::before {
+      content: "+";
+      display: inline-block;
+      width: 1.25em;
+      font-weight: 800;
+    }
+
+    .submission-details[open] summary::before {
+      content: "−";
+    }
+
+    .submission-details summary:focus-visible {
+      outline: 3px solid #fbbf24;
+      outline-offset: 3px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -660,20 +721,55 @@
     <div class="container">
       <div class="card">
         <h2>Call for Papers</h2>
+        <p>
+          We invite submissions on the control, learning, and intelligence of athletic humanoid
+          robots.
+          We welcome original research papers, position papers, and work-in-progress
+          contributions. 
+          <a class="submission-button" href="https://openreview.net/group?id=IEEE.org/IROS/2026/Workshop/AthleticHumanoid#tab-recent-activity" target="_blank" rel="noopener noreferrer">OpenReview Submission Link</a>
+        </p>
+
+        <h3>Topics of Interest</h3>
         <p>Topics include, but are not limited to:</p>
         <ul>
-          <li>Perception for fast and dynamic humanoid behaviors</li>
-          <li>Real-time decision making for athletic humanoid robots</li>
-          <li>Reinforcement learning for sports and agile locomotion</li>
-          <li>Whole-body control under contact-rich and high-speed conditions</li>
-          <li>Vision-based policy learning for athletic skills</li>
-          <li>Humanoid robots in racket sports, football, badminton, and related tasks</li>
-          <li>Biomechanics and human movement inspiration for humanoid intelligence</li>
-          <li>Sim-to-real transfer for athletic humanoid systems</li>
-          <li>Embodied AI for reactive and physically grounded decision making</li>
-          <li>Benchmarking, evaluation, and open challenges in athletic humanoid robotics</li>
+          <li>Perception for agile and dynamic humanoid behaviors</li>
+          <li>Real-time decision making and embodied intelligence</li>
+          <li>Reinforcement learning for athletic skills and locomotion</li>
+          <li>Whole-body control for contact-rich, high-speed motions</li>
+          <li>Vision-based learning and sim-to-real transfer</li>
+          <li>Humanoid robot sports (e.g., football, badminton, racket sports)</li>
+          <li>Biomechanics-inspired methods for humanoid intelligence</li>
+          <li>Benchmarking, evaluation, and open challenges for athletic humanoids</li>
         </ul>
-        <div class="notice">The submission portal is coming in the next few days.</div>
+
+        <details class="submission-details">
+          <summary>Paper type and Important Dates</summary>
+
+          <h3>Paper Types</h3>
+          <p>Authors may submit one of the following:</p>
+          <ul>
+            <li><strong>Short papers (2–4 pages):</strong> Preliminary results, emerging ideas, work in progress, or concise summaries of recently published work.</li>
+            <li><strong>Full papers (up to 8 pages):</strong> Original research contributions with sufficient technical detail and experimental or theoretical validation.</li>
+          </ul>
+
+          <h3>Important Dates</h3>
+          <ul>
+            <li><strong>Submission deadline:</strong> Aug 24th</li>
+            <li><strong>Acceptance notification:</strong> Sep 10th</li>
+          </ul>
+
+          <p>
+            All submissions must follow the <a href="https://2026.ieee-iros.org/contribute/call-for-papers/" target="_blank" rel="noopener noreferrer">standard IROS paper format</a> and will undergo peer review.
+            Submissions will be evaluated based on their relevance to the workshop, technical quality
+            and originality, clarity of presentation, soundness of methodology, and the degree to
+            which the claims are supported by theoretical analysis and/or experimental evidence.
+          </p>
+          <p>
+            This workshop is non-archival, allowing authors to submit work that is under review
+            elsewhere or intended for future publication at conferences or in journals. Accepted
+            papers will be presented at the workshop as spotlight talks or poster presentations.
+          </p>
+        </details>
       </div>
     </div>
   </section>
