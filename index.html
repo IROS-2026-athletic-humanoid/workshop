@@ -232,7 +232,7 @@
     }
 
     .demo-grid {
-      grid-template-columns: repeat(2, minmax(0, 260px));
+      grid-template-columns: repeat(3, minmax(0, 260px));
       justify-content: start;
     }
 
@@ -571,14 +571,21 @@
           </div>
 
           <div class="speaker">
-            <img src="pictures/Aude Billard.jpg" alt="Aude Billard headshot" />
+            <img src="pictures/Peter_Stone.png" alt="Peter Stone headshot" />
             <div class="speaker-info">
-              <strong>Aude Billard</strong><br />
+              <strong>Peter Stone</strong><br />
               Professor<br />
-              École Polytechnique Fédérale de Lausanne <br />
-              <a href="https://people.epfl.ch/aude.billard" target="_blank">Profile page</a>
+              The University of Texas at Austin
             </div>
-            <div class="presentation"><span class="presentation-title">Next Challenges for Humanoids and Any Robots to Display Human-Like or Beyond Dexterity</span></div>
+            <div class="presentation">
+              <div class="presentation-head">
+                <span class="presentation-title">Outplaying Elite Table Tennis Players with an Autonomous Robot</span>
+                <button class="abstract-toggle" type="button" aria-expanded="false">Presentation abstract</button>
+              </div>
+              <div class="abstract-panel">
+                <p>Artificial intelligence (AI) systems now challenge or surpass human experts in many computer games. Physical and real-time sports such as table tennis, however, remain a major open challenge because of their requirements for fast, precise and adversarial interactions near obstacles and at the edge of human reaction time. This talk presents Ace, to our knowledge the first real-world autonomous system competitive with elite human table tennis players. Ace addresses the challenges of physical real-time interaction through a new, high-speed perception system using event-based vision sensors, and a new control system based on model-free reinforcement learning, as well as state-of-the-art high-speed robot hardware. Evaluated in matches against elite and professional players under official competition rules, Ace achieved several victories and demonstrated consistent returns of high-speed, high-spin shots. These results highlight the potential of physical AI agents to perform complex, real-time interactive tasks, suggesting broader applications in domains requiring fast, precise human-robot interaction.</p>
+              </div>
+            </div>
           </div>
 
           <div class="speaker">
@@ -616,6 +623,17 @@
                 <p>I will also introduce an annealed curriculum that initially uses locomotion-related subtasks to reduce the exploration difficulty of whole-body learning. These auxiliary objectives are gradually annealed away as training progresses, reducing gradient conflicts between locomotion and striking. In addition, I will discuss a prediction-free variant that achieves competitive performance without explicit shuttlecock trajectory prediction, highlighting the potential for more reactive and streamlined dynamic interaction systems. The resulting policy is evaluated in simulation and on a real humanoid, demonstrating dynamic and coordinated whole-body badminton performance.</p>
               </div>
             </div>
+          </div>
+
+          <div class="speaker">
+            <img src="pictures/Aude Billard.jpg" alt="Aude Billard headshot" />
+            <div class="speaker-info">
+              <strong>Aude Billard</strong><br />
+              Professor<br />
+              École Polytechnique Fédérale de Lausanne <br />
+              <a href="https://people.epfl.ch/aude.billard" target="_blank">Profile page</a>
+            </div>
+            <div class="presentation"><span class="presentation-title">Next Challenges for Humanoids and Any Robots to Display Human-Like or Beyond Dexterity</span></div>
           </div>
 
           <div class="speaker">
@@ -791,6 +809,13 @@
             <strong>Booster Robotics</strong>
           </a><br />
           Demo: Dancing / Football
+        </div>
+        <div class="company">
+          <a href="https://www.unitree.com/" target="_blank" rel="noopener noreferrer">
+            <img src="pictures/unitree.png" alt="Unitree Robotics" />
+            <strong>Unitree Robotics</strong>
+          </a><br />
+          Demo: Sports
         </div>
       </div>
     </div>
