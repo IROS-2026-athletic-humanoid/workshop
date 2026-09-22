@@ -118,7 +118,8 @@
     #program { order: 4; }
     #organizers { order: 5; }
     #demos { order: 6; }
-    #contact { order: 7; }
+    #sponsors { order: 7; }
+    #contact { order: 8; }
 
     .card {
       background: var(--card);
@@ -417,6 +418,11 @@
       margin-bottom: 8px;
     }
 
+    .program-zoom-link {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -509,6 +515,7 @@
       <a href="#program">Schedule</a>
       <a href="#organizers">Organizers</a>
       <a href="#demos">Live Demos</a>
+      <a href="#sponsors">Sponsors</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -849,10 +856,31 @@
     </div>
   </section>
 
+  <section id="sponsors" class="section">
+    <div class="container">
+      <h2>Sponsors</h2>
+      <div class="grid demo-grid">
+        <div class="company">
+          <a href="https://www.ieee-ras.org/humanoid-robotics/" target="_blank" rel="noopener noreferrer">
+            <img src="pictures/RAS_TC_Logo.png" alt="IEEE RAS-TC on Humanoid Robotics logo" />
+            <strong>IEEE RAS-TC on Humanoid Robotics</strong>
+          </a>
+        </div>
+        <div class="company">
+          <a href="https://www.phybot.tech/en/about" target="_blank" rel="noopener noreferrer">
+            <img src="pictures/Phybot_Logo.png" alt="Beijing PhyBot Technology logo" />
+            <strong>Beijing PhyBot Technology</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="program" class="section">
     <div class="container">
       <div class="card">
         <h2>Program Schedule</h2>
+        <p><a class="program-zoom-link" href="https://purdue-edu.zoom.us/j/94532110759?pwd=7NA0tuDW4vEplYfN6okMzJ5b4MmYgJ.1" target="_blank" rel="noopener noreferrer">Program Zoom link</a></p>
         <table>
           <thead>
             <tr>
@@ -883,7 +911,7 @@
             </tr>
             <tr>
               <td>10:40 - 11:10</td>
-              <td>Coffee break + Poster session</td>
+              <td>Coffee break</td>
             </tr>
             <tr>
               <td>11:10 - 11:40</td>
@@ -891,7 +919,7 @@
             </tr>
             <tr>
               <td>11:40 - 12:10</td>
-              <td>Demo session by Unitree, Phybot, and Booster</td>
+              <td>Demo session by Phybot, Booster, and Unitree</td>
             </tr>
             <tr>
               <td>12:10 - 13:30</td>
@@ -927,6 +955,12 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- <h3>Acknowledgements</h3> -->
+        <p>
+          We thank <strong>IEEE RAS-TC on Humanoid Robotics</strong> and <strong>PhyBot</strong>
+          for sponsoring the <strong>Best Poster Award</strong> and <strong>Best Presentation Award</strong>.
+        </p>
       </div>
     </div>
   </section>
@@ -940,8 +974,8 @@
           <a href="mailto:chang970@purdue.edu">chang970@purdue.edu</a>.
         </p>
         <p>
-          For workshop paper submission questions, please contact Wenxi Chen at
-          <a href="mailto:chen4803@purdue.edu">chen4803@purdue.edu</a>.
+          For workshop paper submission questions, please contact Muqun Hu at
+          <a href="mailto:hu1033@purdue.edu">hu1033@purdue.edu</a>.
         </p>
       </div>
     </div>
